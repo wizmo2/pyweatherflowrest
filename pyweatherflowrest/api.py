@@ -198,7 +198,7 @@ class WeatherFlowApiClient:
 
         data = await self._api_request(self.observation_url)
         try:
-            if data is not None:
+            if data is not None and data['obs'] != []:
                 obervations: dict = data['obs'][0]
 
                 beaufort_data: BeaufortDescription = self.calc.beaufort_value(obervations.get("wind_avg"))
